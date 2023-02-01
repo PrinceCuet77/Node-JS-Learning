@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
         }
         res.end('About Page')
     }
-    res.end('Error Page')
+    // res.end('Error Page')
 })
 
 server.listen(5000, () => {
