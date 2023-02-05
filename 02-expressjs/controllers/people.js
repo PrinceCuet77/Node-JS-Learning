@@ -1,26 +1,10 @@
-const express = require('express')
-// const { people } = require('./02-expressjs/data')
-const { people } = require('./data')
+let { people } = require('../data')
 
-const app = express()
-
-// Static assets
-// app.use(express.static('./02-expressjs/methods-public'))
-app.use(express.static('./methods-public'))
-
-// Parse from data - actually grabbing data from body (body parser)
-app.use(express.urlencoded({ extended: false }))
-
-// Parse JSON - Sending data using JSON
-app.use(express.json())
-
-// GET method
-app.get('/api/people', (req, res) => {
+const getPeople = (req, res) => {
     res.status(200).json({ success: true, data: people })
-})
+}
 
-// POST method
-app.post('/api/people', (req, res) => {
+const createPerson = (req, res) => {
     const { name } = req.body
 
     if (!name) {
@@ -30,9 +14,9 @@ app.post('/api/people', (req, res) => {
     }
 
     res.status(201).json({ success: true, person: name })
-})
+}
 
-app.post('/api/people/postman', (req, res) => {
+const createPersonPostman = (req, res) => {
     const { name } = req.body
 
     if (!name) {
@@ -42,18 +26,9 @@ app.post('/api/people/postman', (req, res) => {
     }
 
     res.status(201).json({ success: true, data: [...people, name] })
-})
+}
 
-app.post('/login', (req, res) => {
-    const { name } = req.body
-
-    if (name) {
-        return res.status(200).send(`Welcome ${name}`)
-    }
-})
-
-// PUT method
-app.put('/api/people/:id', (req, res) => {
+const updatePerson = (req, res) => {
     const { id } = req.params
     const { name } = req.body
 
@@ -75,10 +50,9 @@ app.put('/api/people/:id', (req, res) => {
     })
 
     res.status(200).json({ success: true, data: newPeople })
-})
+}
 
-// DELETE method
-app.delete('/api/people/:id', (req, res) => {
+const deletePerson = (req, res) => {
     const { id } = req.params
 
     console.log(id)
@@ -94,8 +68,12 @@ app.delete('/api/people/:id', (req, res) => {
     })
 
     res.status(200).json({ success: true, data: newPeople })
-})
+}
 
-app.listen(5000, () => {
-    console.log('Server is running on 5000...')
-})
+module.exports = {
+    getPeople,
+    createPerson,
+    createPersonPostman,
+    updatePerson,
+    deletePerson,
+}

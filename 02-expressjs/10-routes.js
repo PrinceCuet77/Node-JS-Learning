@@ -1,12 +1,14 @@
 const express = require('express')
 // const { people } = require('./02-expressjs/data')
-const people = require('./02-expressjs/routes/people1')
-const auth = require('./02-expressjs/routes/auth')
+// const people = require('./02-expressjs/routes/people')
+const people = require('./routes/people')
+const auth = require('./routes/auth')
 
 const app = express()
 
 // Static assets
-app.use(express.static('./02-expressjs/methods-public'))
+// app.use(express.static('./02-expressjs/methods-public'))
+app.use(express.static('./methods-public'))
 
 // Parse from data
 app.use(express.urlencoded({ extended: false }))
