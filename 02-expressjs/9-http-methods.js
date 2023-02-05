@@ -1,15 +1,17 @@
 const express = require('express')
-const { people } = require('./02-expressjs/data')
+// const { people } = require('./02-expressjs/data')
+const { people } = require('./data')
 
 const app = express()
 
 // Static assets
-app.use(express.static('./02-expressjs/methods-public'))
+// app.use(express.static('./02-expressjs/methods-public'))
+app.use(express.static('./methods-public'))
 
-// Parse from data
+// Parse from data - actually grabbing data from body (body parser)
 app.use(express.urlencoded({ extended: false }))
 
-// Parse JSON
+// Parse JSON - Sending data using JSON
 app.use(express.json())
 
 // GET method
