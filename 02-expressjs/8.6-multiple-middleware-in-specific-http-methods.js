@@ -1,6 +1,6 @@
 const express = require('express')
-const logger = require('./02-expressjs/logger')
-const authorize = require('./02-expressjs/authorize1')
+const logger = require('./logger')
+const authorize = require('./authorize1')
 
 const app = express()
 
@@ -30,3 +30,5 @@ app.get('/api/reviews', [logger, authorize], (req, res) => {
 app.listen(5000, () => {
     console.log('Server is running on 5000...')
 })
+
+// I can use my own created middleware & express default provided middleware like app.use(express.static('public')) for static resource.
