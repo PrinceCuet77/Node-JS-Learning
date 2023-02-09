@@ -11,6 +11,9 @@ const sayHi = require('./05-utils')
 const _ = require('./06-alternative-flavor')
 
 console.log(_) // Output: { items: [ 'item1', 'item2' ], singlePerson: { name: 'bob' } }
+const { items, singlePerson } = _
+console.log(items) // Output: [ 'item1', 'item2' ]
+console.log(singlePerson) // Output: { name: 'bob' }
 
 // Invoke all the content of that specific file
 require('./07-mind-grenade')
